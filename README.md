@@ -1,14 +1,11 @@
 ##Run Hadoop Custer within Docker Containers
 如果觉得太慢，可以先下载到本地
 http://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz
-然后更改：vim Dockerfile
-# install hadoop 2.7.2
-#RUN wget https://github.com/kiwenlau/compile-hadoop/releases/download/2.7.2/hadoop-2.7.2.tar.gz && \
-#    tar -xzvf hadoop-2.7.2.tar.gz && \
-ADD hadoop-2.7.2.tar.gz ./
-RUN mv hadoop-2.7.2 /usr/local/hadoop
-#    rm hadoop-2.7.2.tar.gz
-
+放到 hadoop-cluster-docker目录里面:
+```
+ackluo@jackluo-X550CC:/works/hadoop-cluster-docker$ ls
+Dockerfile  README.md  build-image.sh  config  hadoop-2.7.2.tar.gz  resize-cluster.sh  start-container.sh
+```
 博客: [基于Docker搭建Hadoop集群之升级版](http://kiwenlau.com/2016/06/12/160612-hadoop-cluster-docker-update/)
 
 
@@ -17,17 +14,21 @@ RUN mv hadoop-2.7.2 /usr/local/hadoop
 
 ###3 Nodes Hadoop Cluster
 
-#####1. pull docker image
 
-```
-sudo docker pull kiwenlau/hadoop:1.0
-```
-
-#####2. clone github repository
+#####1. clone github repository
 
 ```
 git clone https://github.com/kiwenlau/hadoop-cluster-docker
 ```
+
+#####2. build docker image
+
+```
+cd hadoop-cluster-docker
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz
+sudo sh build-image.sh
+```
+
 
 #####3. create hadoop network
 
@@ -38,7 +39,6 @@ sudo docker network create --driver=bridge hadoop
 #####4. start container
 
 ```
-cd hadoop-cluster-docker
 sudo ./start-container.sh
 ```
 
