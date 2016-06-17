@@ -18,8 +18,8 @@ git clone https://github.com/jackluo2012/hadoop-cluster-docker.git
 
 ```
 cd hadoop-cluster-docker
-docker pull index.alauda.cn/library/ubuntu
-docker tag 8f1bd21bd25c ubuntu:14.04
+docker pull index.alauda.cn/library/ubuntu:14.04
+docker tag 90d5884b1ee0 ubuntu:14.04
 wget http://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz
 sudo sh build-image.sh
 ```
