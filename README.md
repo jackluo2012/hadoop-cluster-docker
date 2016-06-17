@@ -1,13 +1,6 @@
 ##Run Hadoop Custer within Docker Containers
-如果觉得太慢，可以先下载到本地
-http://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz
-放到 hadoop-cluster-docker目录里面:
-```
-ackluo@jackluo-X550CC:/works/hadoop-cluster-docker$ ls
-Dockerfile  README.md  build-image.sh  config  hadoop-2.7.2.tar.gz  resize-cluster.sh  start-container.sh
-```
-博客: [基于Docker搭建Hadoop集群之升级版](http://kiwenlau.com/2016/06/12/160612-hadoop-cluster-docker-update/)
 
+博客: [基于Docker搭建Hadoop集群之升级版](http://kiwenlau.com/2016/06/12/160612-hadoop-cluster-docker-update/)
 
 ![alt tag](https://raw.githubusercontent.com/kiwenlau/hadoop-cluster-docker/master/hadoop-cluster-docker.png)
 
@@ -18,13 +11,15 @@ Dockerfile  README.md  build-image.sh  config  hadoop-2.7.2.tar.gz  resize-clust
 #####1. clone github repository
 
 ```
-git clone https://github.com/kiwenlau/hadoop-cluster-docker
+git clone https://github.com/jackluo2012/hadoop-cluster-docker.git
 ```
 
 #####2. build docker image
 
 ```
 cd hadoop-cluster-docker
+docker pull index.alauda.cn/library/ubuntu
+docker tag 8f1bd21bd25c ubuntu:14.04
 wget http://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz
 sudo sh build-image.sh
 ```
